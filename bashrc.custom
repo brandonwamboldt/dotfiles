@@ -1,0 +1,9 @@
+# Place all of your server specific config options in this file, like your 
+# global $PATH variable, your default editor, and server/computer specific
+# aliases like SSH shortcuts
+
+# Add a custom directory to the $PATH variable
+# PATH=~/bin:$PATH
+
+# Set the default editor to nano
+# export EDITOR=nano
