@@ -19,7 +19,7 @@ COLOR_GREEN='\[\e[1;32m\]'
 COLOR_RED='\[\e[1;31m\]'
 
 # Pretty command prompt
-export PS1="${XTERM_TITLE}[\u@\h] ${COLOR_GREEN}>${COLOR_RESET} "
+export PS1="${XTERM_TITLE}[\u@\h \w] ${COLOR_GREEN}>${COLOR_RESET} "
 
 # Useful aliases
 alias ll='ls -lhAs --color=never'
