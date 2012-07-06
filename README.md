@@ -18,12 +18,12 @@ chmod 600 /etc/bashrc.custom && \
 bash ) || echo "wget is required to run this command"
 ```
 
-This will download the newest bashrc file from github to your server, link it for all existing users in the /home directory and create a /etc/bashrc.custom file for computer specific bash options.
+This will download the newest bashrc file from github to your server, link it for all existing users in the `/home` directory and create a `/etc/bashrc.custom` file for computer specific bash options.
 
 Updating
 --------
 
-Updating the base bashrc file is very easy, and should cause no disruption to your users, provided you keep custom configuration in the `/etc/bashrc.custom` file.
+Updating the base `bashrc` file is very easy, and should cause no disruption to your users, provided you keep custom configuration in the `/etc/bashrc.custom` file.
 
 ```
 update_bashrc
