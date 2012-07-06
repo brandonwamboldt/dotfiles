@@ -25,6 +25,12 @@ Updating
 Updating the base bashrc file is very easy, and should cause no disruption to your users, provided you keep custom configuration in the `/etc/bashrc.custom` file.
 
 ```
+update_bashrc
+```
+
+alternatively, you can use the full command:
+
+```
 wget -O /etc/bashrc https://raw.github.com/brandonwamboldt/bashrc/master/bashrc && bash
 ```
 
@@ -57,6 +63,10 @@ The `..` alias moves you to the parent directory, `...` moves you to the parent'
 
 Changelog
 ---------
+
+#### Version 1.0.1
+
+Added an alias for updating the .bashrc file, a bunch of COLOR_* variables for stylizing the prompt and added some comments
 
 #### Version 1.0.0
 
