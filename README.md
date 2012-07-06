@@ -6,11 +6,11 @@ The .bashrc file that I use on all of my desktops, servers, VMs and even Cygwin 
 Initial Config
 --------------
 
-To copy this onto a new machine, make sure you are running as root and run the following command:
+To copy this onto a new machine, make sure you are running as root and run the following command (Please Note: Installation requires the `wget` binary):
 
 ```
-echo "source /etc/bashrc" | tee /home/*/.bashrc /etc/skel/.bashrc /root/.bashrc >/dev/null && \
-wget -O /etc/bashrc https://raw.github.com/brandonwamboldt/bashrc/master/bashrc && \
+mkdir -p /root && echo "source /etc/bashrc" | tee /home/*/.bashrc /etc/skel/.bashrc /root/.bashrc >/dev/null && \
+wget --no-check-certificate -O /etc/bashrc https://raw.github.com/brandonwamboldt/bashrc/master/bashrc && \
 touch /etc/bashrc.custom && \
 chmod 600 /etc/bashrc && \
 chmod 600 /etc/bashrc.custom && \
