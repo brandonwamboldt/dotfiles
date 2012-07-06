@@ -9,12 +9,13 @@ Initial Config
 To copy this onto a new machine, make sure you are running as root and run the following command (Please Note: Installation requires the `wget` binary):
 
 ```
+type -P wget &>/dev/null && ( \
 mkdir -p /root && echo "source /etc/bashrc" | tee /home/*/.bashrc /etc/skel/.bashrc /root/.bashrc >/dev/null && \
 wget --no-check-certificate -O /etc/bashrc https://raw.github.com/brandonwamboldt/bashrc/master/bashrc && \
 touch /etc/bashrc.custom && \
 chmod 600 /etc/bashrc && \
 chmod 600 /etc/bashrc.custom && \
-bash
+bash ) || echo "wget is required to run this command"
 ```
 
 This will download the newest bashrc file from github to your server, link it for all existing users in the /home directory and create a /etc/bashrc.custom file for computer specific bash options.
