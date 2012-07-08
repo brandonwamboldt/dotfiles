@@ -13,8 +13,8 @@ type -P wget &>/dev/null && ( \
 mkdir -p /root && echo "source /etc/bashrc" | tee /home/*/.bashrc /etc/skel/.bashrc /root/.bashrc >/dev/null && \
 wget --no-check-certificate -O /etc/bashrc https://raw.github.com/brandonwamboldt/bashrc/master/bashrc && \
 touch /etc/bashrc.custom && \
-chmod 600 /etc/bashrc && \
-chmod 600 /etc/bashrc.custom && \
+chmod 644 /etc/bashrc && \
+chmod 644 /etc/bashrc.custom && \
 bash ) || echo "wget is required to run this command"
 ```
 
