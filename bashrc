@@ -27,23 +27,23 @@ shopt -s checkwinsize
 # Colors:
 #------------------------------------------////
 
-COLOR_RESET='\[\e[0m\]'
-COLOR_BLACK='\e[0;30m'
-COLOR_BLUE='\e[0;34m'
-COLOR_GREEN='\e[0;32m'
-COLOR_CYAN='\e[0;36m'
-COLOR_RED='\e[0;31m'
-COLOR_PURPLE='\e[0;35m'
-COLOR_BROWN='\e[0;33m'
-COLOR_LIGHTGRAY='\e[0;37m'
-COLOR_DARKGRAY='\e[1;30m'
-COLOR_LIGHTBLUE='\e[1;34m'
-COLOR_LIGHTGREEN='\e[1;32m'
-COLOR_LIGHTCYAN='\e[1;36m'
-COLOR_LIGHTRED='\e[1;31m'
-COLOR_LIGHTPURPLE='\e[1;35m'
-COLOR_YELLOW='\e[1;33m'
-COLOR_WHITE='\e[1;37m'
+COLOR_RESET="\[\033[0m\]"
+COLOR_BLACK="\[\033[0;30m\]"
+COLOR_BLUE="\[\033[0;34m\]"
+COLOR_GREEN="\[\033[1;32m\]"
+COLOR_CYAN="\[\033[0;36m\]"
+COLOR_RED="\[\033[1;31m\]"
+COLOR_PURPLE="\[\033[0;35m\]"
+COLOR_BROWN="\[\033[0;33m\]"
+COLOR_LIGHTGRAY="\[\033[0;37m\]"
+COLOR_DARKGRAY="\[\033[1;30m\]"
+COLOR_LIGHTBLUE="\[\033[1;34m\]"
+COLOR_LIGHTGREEN="\[\033[1;32m\]"
+COLOR_LIGHTCYAN="\[\033[1;36m\]"
+COLOR_LIGHTRED="\[\033[1;31m\]"
+COLOR_LIGHTPURPLE="\[\033[1;35m\]"
+COLOR_YELLOW="\[\033[1;33m\]"
+COLOR_WHITE="\[\033[1;37m\]"
 
 #------------------------------------------////
 # Aliases:
@@ -72,7 +72,7 @@ alias ns='netstat -alnp --protocol --inet'
 # Set the window title to show the user@host and the current working directory (Don't expand $HOME)
 XTERM_TITLE='\[\033]0;\u@\H \t $(pwd)\a\007\]'
 
-export PS1="${XTERM_TITLE}[\u@\h \w] > "
+export PS1="${XTERM_TITLE}${COLOR_PURPLE}\u${COLOR_RESET}@${COLOR_RED}\h${COLOR_RESET} \w ${COLOR_GREEN}>${COLOR_RESET} "
 
 #------------------------------------------////
 # Functions and Scripts:
