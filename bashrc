@@ -27,7 +27,6 @@ shopt -s checkwinsize
 # Colors:
 #------------------------------------------////
 
-
 COLOR_RESET='\[\e[0m\]'
 COLOR_BLACK='\e[0;30m'
 COLOR_BLUE='\e[0;34m'
@@ -46,13 +45,12 @@ COLOR_LIGHTPURPLE='\e[1;35m'
 COLOR_YELLOW='\e[1;33m'
 COLOR_WHITE='\e[1;37m'
 
-
 #------------------------------------------////
 # Aliases:
 #------------------------------------------////
 
-
-alias ll='ls -lhAs --color=never'
+alias ls='ls --color'
+alias ll='ls -lhAs'
 alias la='ls -A'
 alias lo='ls -o'
 alias lh='ls -lh'
@@ -67,7 +65,6 @@ alias update_bashrc='wget -O /etc/bashrc https://raw.github.com/brandonwamboldt/
 alias ping='ping -c 4'
 alias ns='netstat -alnp --protocol --inet'
 
-
 #------------------------------------------////
 # Prompt:
 #------------------------------------------////
@@ -76,7 +73,6 @@ alias ns='netstat -alnp --protocol --inet'
 XTERM_TITLE='\[\033]0;\u@\H \t $(pwd)\a\007\]'
 
 export PS1="${XTERM_TITLE}[\u@\h \w] > "
-
 
 #------------------------------------------////
 # Functions and Scripts:
