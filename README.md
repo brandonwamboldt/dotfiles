@@ -32,7 +32,7 @@ update_bashrc
 alternatively, you can use the full command:
 
 ```
-wget -O /etc/bashrc https://raw.github.com/brandonwamboldt/bashrc/master/bashrc && bash
+wget --no-check-certificate -O /etc/bashrc https://raw.github.com/brandonwamboldt/bashrc/master/bashrc && bash
 ```
 
 Features
