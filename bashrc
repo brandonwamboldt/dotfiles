@@ -61,7 +61,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-alias update_bashrc='wget -O /etc/bashrc https://raw.github.com/brandonwamboldt/bashrc/master/bashrc && bash'
+alias update_bashrc='wget --no-check-certificate -O /etc/bashrc https://raw.github.com/brandonwamboldt/bashrc/master/bashrc && bash'
 alias ping='ping -c 4'
 alias ns='netstat -alnp --protocol --inet'
 
