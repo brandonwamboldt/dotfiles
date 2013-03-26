@@ -7,13 +7,13 @@
 
 # Don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
-HISTCONTROL=ignoredups:ignorespace 
+HISTCONTROL=ignoredups:ignorespace
 
 # Append to the history file, don't overwrite it
-shopt -s histappend 
+shopt -s histappend
 
 # For setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000 
+HISTSIZE=1000
 HISTFILESIZE=2000
 
 # Check the window size after each command and, if necessary,
@@ -27,31 +27,31 @@ shopt -s checkwinsize
 # Colors:
 #------------------------------------------////
 
-COLOR_RESET="\[\033[0m\]"
-COLOR_BLACK="\[\033[0;30m\]"
-COLOR_BLUE="\[\033[0;34m\]"
-COLOR_GREEN="\[\033[1;32m\]"
-COLOR_CYAN="\[\033[0;36m\]"
-COLOR_RED="\[\033[1;31m\]"
-COLOR_PURPLE="\[\033[0;35m\]"
-COLOR_BROWN="\[\033[0;33m\]"
-COLOR_LIGHTGRAY="\[\033[0;37m\]"
-COLOR_DARKGRAY="\[\033[1;30m\]"
-COLOR_LIGHTBLUE="\[\033[1;34m\]"
-COLOR_LIGHTGREEN="\[\033[1;32m\]"
-COLOR_LIGHTCYAN="\[\033[1;36m\]"
-COLOR_LIGHTRED="\[\033[1;31m\]"
-COLOR_LIGHTPURPLE="\[\033[1;35m\]"
-COLOR_YELLOW="\[\033[1;33m\]"
-COLOR_WHITE="\[\033[1;37m\]"
+COLOR_RESET="\033[0m"
+COLOR_BLACK="\033[0;30m"
+COLOR_BLUE="\033[0;34m"
+COLOR_GREEN="\033[1;32m"
+COLOR_CYAN="\033[0;36m"
+COLOR_RED="\033[1;31m"
+COLOR_PURPLE="\033[0;35m"
+COLOR_BROWN="\033[0;33m"
+COLOR_LIGHTGRAY="\033[0;37m"
+COLOR_DARKGRAY="\033[1;30m"
+COLOR_LIGHTBLUE="\033[1;34m"
+COLOR_LIGHTGREEN="\033[1;32m"
+COLOR_LIGHTCYAN="\033[1;36m"
+COLOR_LIGHTRED="\033[1;31m"
+COLOR_LIGHTPURPLE="\033[1;35m"
+COLOR_YELLOW="\033[1;33m"
+COLOR_WHITE="\033[1;37m"
 
 #------------------------------------------////
 # Aliases:
 #------------------------------------------////
 
 alias ls='ls --color'
-alias ll='ls -lhAs'
-alias la='ls -A'
+alias ll='ls -lhs'
+alias la='ls -lhAs'
 alias lo='ls -o'
 alias lh='ls -lh'
 alias sl='ls'
@@ -72,7 +72,7 @@ alias ns='netstat -alnp --protocol --inet'
 # Set the window title to show the user@host and the current working directory (Don't expand $HOME)
 XTERM_TITLE='\[\033]0;\u@\H \t $(pwd)\a\007\]'
 
-export PS1="${XTERM_TITLE}${COLOR_PURPLE}\u${COLOR_RESET}@${COLOR_RED}\h${COLOR_RESET} \w ${COLOR_GREEN}>${COLOR_RESET} "
+export PS1="${XTERM_TITLE}\[$COLOR_PURPLE\]\u\[$COLOR_RESET\]@\[$COLOR_RED\]\h\[$COLOR_RESET\] \w \[$COLOR_GREEN\]>\[$COLOR_RESET\] "
 
 #------------------------------------------////
 # Functions and Scripts:
@@ -110,8 +110,8 @@ ppid () {
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
 export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'                           
-export LESS_TERMCAP_so=$'\E[01;44;33m'                                 
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
