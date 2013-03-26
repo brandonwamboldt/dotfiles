@@ -72,7 +72,7 @@ alias ns='netstat -alnp --protocol --inet'
 # Set the window title to show the user@host and the current working directory (Don't expand $HOME)
 XTERM_TITLE='\[\033]0;\u@\H \t $(pwd)\a\007\]'
 
-export PS1="${XTERM_TITLE}\[$COLOR_PURPLE\]\u\[$COLOR_RESET\]@\[$COLOR_RED\]\h\[$COLOR_RESET\] \w \[$COLOR_GREEN\]>\[$COLOR_RESET\] "
+export PS1="${XTERM_TITLE}\[$COLOR_YELLOW\]\u\[$COLOR_RESET\]@\[$COLOR_RED\]\h\[$COLOR_RESET\] \w \[$COLOR_GREEN\]>\[$COLOR_RESET\] "
 
 #------------------------------------------////
 # Functions and Scripts:
