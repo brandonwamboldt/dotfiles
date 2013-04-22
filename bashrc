@@ -77,6 +77,11 @@ export PS1="${XTERM_TITLE}\[$COLOR_YELLOW\]\u\[$COLOR_RESET\]@\[$COLOR_RED\]\h\[
 # Functions and Scripts:
 #------------------------------------------////
 
+# Attach strace to all processes matching the given process name
+straceall () {
+        ps -ef | grep $1 | awk '{ print "-p " $2}' | xargs strace
+}
+
 # Useful extract feature so you don't have to remember the arguments to extract
 # all of the various archive formats
 extract () {
