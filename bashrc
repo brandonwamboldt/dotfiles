@@ -69,9 +69,20 @@ alias ns='netstat -alnp --protocol --inet'
 #------------------------------------------////
 
 # Set the window title to show the user@host and the current working directory (Don't expand $HOME)
-XTERM_TITLE='\[\033]0;\u@\H \t $(pwd)\a\007\]'
+function set_bash_prompt() {
+        case $TERM in
+                xterm*)
+                        XTERM_TITLE='\[\033]0;\u@\H \t $(pwd)\a\007\]'
+                        ;;
+                *)
+                        XTERM_TITLE=''
+                        ;;
+        esac
 
-export PS1="${XTERM_TITLE}\[$COLOR_YELLOW\]\u\[$COLOR_RESET\]@\[$COLOR_RED\]\h\[$COLOR_RESET\] \w \[$COLOR_GREEN\]>\[$COLOR_RESET\] "
+        PS1="${XTERM_TITLE}\[$COLOR_YELLOW\]\u\[$COLOR_RESET\]@\[$COLOR_RED\]\h\[$COLOR_RESET\] \w \[$COLOR_GREEN\]>\[$COLOR_RESET\] "
+}
+
+PROMPT_COMMAND=set_bash_prompt
 
 #------------------------------------------////
 # Functions and Scripts:
