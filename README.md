@@ -10,9 +10,11 @@ I set this up so frequently, I wrote a small script that I can copy and paste on
 
 ```
 type -P git &>/dev/null && ( \
+mkdir /tmp/bdotfiles && cd /tmp/bdotfiles && git clone https://github.com/brandonwamboldt/dotfiles.git . && \
 ls --color=never /home | awk '{print "/home/" $1}' | xargs -n 1 cp -r .aliases .bash_profile .bash_prompt .bashrc .curlrc .exports .functions .gitconfig .git_prompt .vim .vimrc && \
 cp -r .aliases .bash_profile .bash_prompt .bashrc .curlrc .exports .functions .gitconfig .git_prompt .vim .vimrc /root && \
 cp -r .aliases .bash_profile .bash_prompt .bashrc .curlrc .exports .functions .gitconfig .git_prompt .vim .vimrc /etc/skel && \
+cd - && rm -rf /tmp/bdotfiles && \
 bash ) || echo "git is required to run this command"
 ```
 
