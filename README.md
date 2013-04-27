@@ -1,42 +1,20 @@
-bashrc
-======
+Brandon's dotfiles
+==================
 
-The .bashrc file that I use on all of my desktops, servers, VMs and even Cygwin setups
+Installation
+------------
 
-Initial Config
---------------
+I set this up so frequently, I wrote a small script that I can copy and paste onto the command line to install the latest version of my dotfiles. The script requires git.
 
-To copy this onto a new machine, make sure you are running as root and run the following command (Please Note: Installation requires the `wget` binary):
-
-```
-type -P wget &>/dev/null && ( \
-mkdir -p /root && echo "source /etc/bashrc" | tee /home/*/.bashrc /etc/skel/.bashrc /root/.bashrc >/dev/null && \
-wget --no-check-certificate -O /etc/bashrc https://raw.github.com/brandonwamboldt/bashrc/master/bashrc && \
-touch /etc/bashrc.custom && \
-chmod 644 /etc/bashrc && \
-chmod 644 /etc/bashrc.custom && \
-bash ) || echo "wget is required to run this command"
-```
-
-This will download the newest bashrc file from github to your server, link it for all existing users in the `/home` directory and create a `/etc/bashrc.custom` file for computer specific bash options.
-
-Updating
---------
-
-Updating the base `bashrc` file is very easy, and should cause no disruption to your users, provided you keep custom configuration in the `/etc/bashrc.custom` file.
+**Warning:** This script installs the dotfiles for all users on the system as the dotfiles in this repository are general purpose. It also installs the dotfiles into the skeleton directory for new users.
 
 ```
-update_bashrc
+type -P git &>/dev/null && ( \
+ls --color=never /home | awk '{print "/home/" $1}' | xargs -n 1 cp -r .aliases .bash_profile .bash_prompt .bashrc .curlrc .exports .functions .gitconfig .git_prompt .vim .vimrc && \
+cp -r .aliases .bash_profile .bash_prompt .bashrc .curlrc .exports .functions .gitconfig .git_prompt .vim .vimrc /root && \
+cp -r .aliases .bash_profile .bash_prompt .bashrc .curlrc .exports .functions .gitconfig .git_prompt .vim .vimrc /etc/skel && \
+bash ) || echo "git is required to run this command"
 ```
-
-alternatively, you can use the full command:
-
-```
-wget --no-check-certificate -O /etc/bashrc https://raw.github.com/brandonwamboldt/bashrc/master/bashrc && bash
-```
-
-Features
---------
 
 #### Extract archives easily
 
@@ -48,11 +26,11 @@ extract php-5.4.3.tar.gz
 
 #### Aliases for better directory listings
 
-The `ll` alias is provided for nicer directory listings. `ll` prettys nice file sizes, full file info, disables color and more!
+The `l` alias is provided for nicer directory listings. `l` prettys nice file sizes, full file info, enables color and more!
 
 #### Nicer user prompt
 
-The default user prompt is overwritten with one that shows useful info in the title bar, and shows the user, host and working directory inline, with colors!
+The default user prompt is overwritten with one that shows useful info in the title bar, and shows the user, host and working directory inline, with colors! It will also show you the current Git branch if you are in a Git repository.
 
 #### Enhanced bash history
 
@@ -64,6 +42,12 @@ The `..` alias moves you to the parent directory, `...` moves you to the parent'
 
 Changelog
 ---------
+
+#### Version 2.0.0
+
+* Renamed repository to `dotfiles` to match the rest of GitHub users doing this
+* Added a bunch more of my dotfiles instead of just my `.bashrc` file
+* Added lots of cool new things
 
 #### Version 1.0.1
 

@@ -1,0 +1,26 @@
+[user]
+        name = Brandon Wamboldt
+        email = brandon.wamboldt@gmail.com
+[core]
+	whitespace = trailing-space,space-before-tab
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+        ui = true
+	page = true
+[alias]
+	ci = commit -a
+	co = checkout
+	st = status -sb
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short --branches
+	praise = blame
+	purr = pull --rebase
+	standup = “!git log –since yesterday –author `git config user.email` –pretty=short”
+[apply]
+	whitespace = fix
+[url "git://github.com/"]
+	insteadOf = gh:
+[url "git@github.com:"]
+	pushInsteadOf = "git://github.com/"

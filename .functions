@@ -1,0 +1,41 @@
+#------------------------------------------////
+# Functions and Scripts:
+#------------------------------------------////
+
+# Attach strace to all processes matching the given process name
+straceall () {
+        ps -ef | grep $1 | awk '{ print "-p " $2}' | xargs strace
+}
+
+# Useful extract feature so you don't have to remember the arguments to extract
+# all of the various archive formats
+extract () {
+   if [ -f $1 ] ; then
+       case $1 in
+           *.tar.bz2)   tar xvjf $1    ;;
+           *.tar.gz)    tar xvzf $1    ;;
+           *.bz2)       bunzip2 $1     ;;
+           *.rar)       unrar x $1       ;;
+           *.gz)        gunzip $1      ;;
+           *.tar)       tar xvf $1     ;;
+           *.tbz2)      tar xvjf $1    ;;
+           *.tgz)       tar xvzf $1    ;;
+           *.zip)       unzip $1       ;;
+           *.Z)         uncompress $1  ;;
+           *.7z)        7z x $1        ;;
+           *)           echo "don't know how to extract '$1'..." ;;
+       esac
+   else
+       echo "'$1' is not a valid file!"
+   fi
+ }
+
+# Parent process ID
+ppid () {
+        ps -p ${1:-$$} -o ppid=;
+}
+
+# Create a new directory and enter it
+function mkd() {
+	mkdir -p "$@" && cd "$@"
+}
