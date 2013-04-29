@@ -39,7 +39,7 @@ function set_bash_prompt() {
                         ;;
         esac
 
-        PS1="${XTERM_TITLE}\[$COLOR_PURPLE\]\u\[$COLOR_RESET\]@\[$COLOR_RED\]\h\[$COLOR_RESET\] \w\[$COLOR_CYAN\]$(__git_ps1)$(svn_prompt)$(hg_branch)\[$COLOR_RESET\]\[$COLOR_GREEN\] >\[$COLOR_RESET\] "
+        PS1="${XTERM_TITLE}\[$COLOR_PURPLE\]\u\[$COLOR_RESET\] on \[$COLOR_RED\]\h\[$COLOR_RESET\] in \w\[$COLOR_CYAN\]$(__git_ps1)$(svn_prompt)$(hg_branch)\[$COLOR_RESET\]\[$COLOR_GREEN\]\n>\[$COLOR_RESET\] "
 }
 
 PROMPT_COMMAND=set_bash_prompt
