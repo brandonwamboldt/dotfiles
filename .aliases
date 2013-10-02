@@ -6,6 +6,9 @@ alias .....="cd ../../../.."
 alias ~="cd ~" 
 alias -- -="cd -"
 
+# See if a process is running
+alias p='ps -ef | grep -v grep | grep'
+
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
