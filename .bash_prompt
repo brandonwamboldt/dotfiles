@@ -25,7 +25,6 @@ COLOR_WHITE="\033[1;37m"
 #------------------------------------------////
 
 source ~/.git_prompt
-source ~/.svn_prompt
 source ~/.hg_prompt
 
 # Set the window title to show the user@host and the current working directory (Don't expand $HOME)
@@ -39,7 +38,7 @@ function set_bash_prompt() {
                         ;;
         esac
 
-        PS1="${XTERM_TITLE}\[$COLOR_PURPLE\]\u\[$COLOR_RESET\] on \[$COLOR_RED\]\h\[$COLOR_RESET\] in \w\[$COLOR_CYAN\]$(__git_ps1)$(svn_prompt)$(hg_branch)\[$COLOR_RESET\]\n\[$COLOR_GREEN\]>\[$COLOR_RESET\] "
+        PS1="${XTERM_TITLE}\[$COLOR_PURPLE\]\u\[$COLOR_RESET\] on \[$COLOR_RED\]\h\[$COLOR_RESET\] in \w\[$COLOR_CYAN\]$(__git_ps1)$(hg_branch)\[$COLOR_RESET\]\n\[$COLOR_GREEN\]>\[$COLOR_RESET\] "
 }
 
 PROMPT_COMMAND=set_bash_prompt
