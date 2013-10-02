@@ -1,6 +1,6 @@
 [user]
-        name = Brandon Wamboldt
-        email = brandon.wamboldt@gmail.com
+#        name = Your Name
+#        email = me@here.com
 [core]
 	whitespace = trailing-space,space-before-tab
 [color]
@@ -24,3 +24,5 @@
 	insteadOf = gh:
 [url "git@github.com:"]
 	pushInsteadOf = "git://github.com/"
+[push]
+        default = matching
