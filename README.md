@@ -5,7 +5,9 @@ Installation
 ------------
 
 ```
-curl -sS https://codeload.github.com/brandonwamboldt/dotfiles/tar.gz/master | tar --strip-components=1 -C ~ -zx && rm ~/README.md
+curl -sS https://codeload.github.com/brandonwamboldt/dotfiles/tar.gz/master | \
+tar --strip-components=1 -C ~ -zx && \
+rm ~/README.md
 ```
 
 Features
