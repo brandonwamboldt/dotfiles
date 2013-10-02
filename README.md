@@ -4,32 +4,8 @@ Brandon's dotfiles
 Installation
 ------------
 
-### System Wide Installation
-
-I set this up so frequently, I wrote a small script that I can copy and paste onto the command line to install the latest version of my dotfiles. The script requires git.
-
-**Warning:** This script installs the dotfiles for all users on the system as the dotfiles in this repository are general purpose. It also installs the dotfiles into the skeleton directory for new users.
-
 ```
-type -P git &>/dev/null && ( \
-mkdir /tmp/bdotfiles && cd /tmp/bdotfiles && git clone https://github.com/brandonwamboldt/dotfiles.git . && \
-ls --color=never /home | awk '{print "/home/" $1}' | xargs -n 1 cp -r .aliases .bash_profile .bash_prompt .bashrc .curlrc .exports .functions .gitconfig .git_prompt .svn_prompt .hg_prompt .vim .vimrc && \
-cp -r .aliases .bash_profile .bash_prompt .bashrc .curlrc .exports .functions .gitconfig .git_prompt .svn_prompt .hg_prompt .vim .vimrc /root && \
-cp -r .aliases .bash_profile .bash_prompt .bashrc .curlrc .exports .functions .gitconfig .git_prompt .svn_prompt .hg_prompt .vim .vimrc /etc/skel && \
-cd - && rm -rf /tmp/bdotfiles && \
-bash ) || echo "git is required to run this command"
-```
-
-### Install for your user only
-
-Here's a version of the install command that will only install to the user you are currently logged in as. It will not affect any other users.
-
-```
-type -P git &>/dev/null && ( \
-mkdir /tmp/bdotfiles && cd /tmp/bdotfiles && git clone https://github.com/brandonwamboldt/dotfiles.git . && \
-cp -r .aliases .bash_profile .bash_prompt .bashrc .curlrc .exports .functions .gitconfig .git_prompt .svn_prompt .hg_prompt .vim .vimrc ~ && \
-cd - && rm -rf /tmp/bdotfiles && \
-bash ) || echo "git is required to run this command"
+curl -sS https://codeload.github.com/brandonwamboldt/dotfiles/tar.gz/master | tar --strip-components=1 -C ~ -zx && rm ~/README.md
 ```
 
 Features
