@@ -4,7 +4,7 @@
 
 # Attach strace to all processes matching the given process name
 straceall () {
-        ps -ef | grep $1 | awk '{ print "-p " $2}' | xargs strace
+        ps -ef | grep $1 | awk '{ print "-p " $2}' | xargs strace -v -s 100
 }
 
 # Useful extract feature so you don't have to remember the arguments to extract
