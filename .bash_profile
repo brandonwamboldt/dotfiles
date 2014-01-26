@@ -31,3 +31,17 @@ for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
 	[ -r "$file" ] && source "$file"
 done
 unset file
+
+#------------------------------------------////
+# Start SSH agent in Cygwin
+#------------------------------------------////
+
+if [ "$(expr substr $(uname -s) 1 6)" == "CYGWIN" ]; then
+        SSHAGENT=/usr/bin/ssh-agent
+        SSHAGENTARGS="-s"
+
+        if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
+                eval `$SSHAGENT $SSHAGENTARGS`
+                trap "kill $SSH_AGENT_PID" 0
+        fi
+fi
