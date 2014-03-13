@@ -25,4 +25,4 @@
 [url "git@github.com:"]
 	pushInsteadOf = "git://github.com/"
 [push]
-        default = matching
+        default = simple
