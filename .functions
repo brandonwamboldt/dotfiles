@@ -39,3 +39,9 @@ ppid () {
 function mkd() {
 	mkdir -p "$@" && cd "$@"
 }
+
+# Search for a process
+function psgrep() {
+        ps -ef | grep $1 | grep -v grep
+}
+
