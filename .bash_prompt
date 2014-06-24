@@ -1,3 +1,6 @@
+SHOW_GIT_PROMPT=1
+SHOW_HG_PROMPT=1
+
 #------------------------------------------////
 # Colors:
 #------------------------------------------////
@@ -20,25 +23,36 @@ COLOR_LIGHTPURPLE="\033[1;35m"
 COLOR_YELLOW="\033[1;33m"
 COLOR_WHITE="\033[1;37m"
 
-#------------------------------------------////
+# ------------------------------------------------------------------------------
 # Prompt:
-#------------------------------------------////
+# ------------------------------------------------------------------------------
 
 source ~/.git_prompt
 source ~/.hg_prompt
 
-# Set the window title to show the user@host and the current working directory (Don't expand $HOME)
+# Set the window title to show the user@host and the current working directory
+# (Don't expand $HOME)
 function set_bash_prompt() {
-        case $TERM in
-                xterm*)
-                        XTERM_TITLE='\[\033]0;\u@\H \t $(pwd)\a\]'
-                        ;;
-                *)
-                        XTERM_TITLE=''
-                        ;;
-        esac
+  case $TERM in
+    xterm*)
+      XTERM_TITLE='\[\033]0;\u@\H \t $(pwd)\a\]'
+      ;;
+    *)
+      XTERM_TITLE=''
+      ;;
+  esac
 
-        PS1="${XTERM_TITLE}\[$COLOR_PURPLE\]\u\[$COLOR_RESET\] on \[$COLOR_RED\]\h\[$COLOR_RESET\] in \w\[$COLOR_CYAN\]$(__git_ps1)$(hg_branch)\[$COLOR_RESET\]\n\[$COLOR_GREEN\]>\[$COLOR_RESET\] "
+  PS1="${XTERM_TITLE}\[$COLOR_PURPLE\]\u\[$COLOR_RESET\] on \[$COLOR_RED\]\h\[$COLOR_RESET\] in \w\[$COLOR_CYAN\]"
+
+  if [ $SHOW_GIT_PROMPT -eq 1 ] ; then
+    PS1="${PS1}$(__git_ps1)"
+  fi
+
+  if [ $SHOW_HG_PROMPT -eq 1 ] ; then
+    PS1="${PS1}$(hg_branch)"
+  fi
+
+  PS1="${PS1}\[$COLOR_RESET\]\n\[$COLOR_GREEN\]↪\[$COLOR_RESET\] "
 }
 
 PROMPT_COMMAND=set_bash_prompt
