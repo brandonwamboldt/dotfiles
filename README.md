@@ -4,9 +4,8 @@ Brandon's dotfiles
 Installation
 ------------
 
-```
-curl -sSL http://github.com/brandonwamboldt/dotfiles/archive/master.tar.gz | tar --strip-components=1 -C ~ -zx && /bin/rm ~/README.md && source ~/.bashrc
-```
+> curl -sSL http://github.com/brandonwamboldt/dotfiles/archive/master.tar.gz | tar --strip-components=1 -C ~ -zx && /bin/rm ~/README.md && source ~/.bashrc
+
 
 Features
 --------
