@@ -2,6 +2,7 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory autocd extendedglob
+setopt promptsubst
 bindkey -v
 zstyle :compinstall filename '/home/brandon/.zshrc'
 
@@ -90,7 +91,7 @@ function git_prompt_status {
 # Prompt
 autoload -U colors && colors
 NEWLINE=$'\n'
-PROMPT="%{$fg[magenta]%}%n%{$reset_color%}@%{$fg_bold[red]%}%m%{$reset_color%} ${PWD/#$HOME/~}$(git_prompt)${NEWLINE}%{$fg_bold[green]%}$(prompt_char)%{$reset_color%} "
+PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg_bold[red]%}%m%{$reset_color%} ${PWD/#$HOME/~}$(git_prompt)${NEWLINE}%{$fg_bold[green]%}$(prompt_char)%{$reset_color%} '
 
 # Load my aliases
 source .aliases
