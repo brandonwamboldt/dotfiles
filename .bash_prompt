@@ -37,6 +37,63 @@ function prompt_char {
   echo '↪'
 }
 
+function git_prompt {
+  gitstatus=$(git status 1>/dev/null 2> /dev/null)
+
+  if [ $? == 0 ] ; then
+    echo " \[$COLOR_CYAN\]($(git_prompt_branch)$(git_prompt_status)\[$COLOR_CYAN\])\[$COLOR_RESET\]"
+  fi
+}
+
+function git_prompt_branch {
+  gitprompt=""
+  branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
+
+  if [ $branch == "HEAD" ] ; then
+    rev=$(git rev-parse HEAD)
+    gitprompt="${gitprompt}${rev:0:7}..."
+  else
+    gitprompt="${gitprompt}${branch}"
+  fi
+
+  gitdir=$(git rev-parse --git-dir 2> /dev/null)
+
+  if [ $gitdir != "" ] ; then
+    if [ -d "$gitdir/rebase-apply" ]; then
+      if [ -f "$gitdir/rebase-apply/rebasing" ]; then
+        gitprompt="${gitprompt}|REBASE"
+      elif [ -f "$gitdir/rebase-apply/applying" ]; then
+        gitprompt="${gitprompt}|AM"
+      else
+        gitprompt="${gitprompt}|AM/REBASE"
+      fi
+    elif [ -f "$gitdir/MERGE_HEAD" ]; then
+      gitprompt="${gitprompt}|MERGING"
+    elif [ -f "$gitdir/CHERRY_PICK_HEAD" ]; then
+      gitprompt="${gitprompt}|CHERRY-PICKING"
+    elif [ -f "$gitdir/REVERT_HEAD" ]; then
+      gitprompt="${gitprompt}|REVERTING"
+    elif [ -f "$gitdir/BISECT_LOG" ]; then
+      gitprompt="${gitprompt}|BISECTING"
+    fi
+  fi
+
+  echo $gitprompt
+}
+
+function git_prompt_status {
+  gitstatus=$(git status)
+  gitprompt=""
+
+  if echo $gitstatus | grep -q "nothing to commit, working directory clean" ; then
+    gitprompt="${gitprompt}\[$COLOR_GREEN\] ✔"
+  else
+    gitprompt="${gitprompt}\[$COLOR_RED\] ✗"
+  fi
+
+  echo $gitprompt
+}
+
 # Set the window title to show the user@host and the current working directory
 # (Don't expand $HOME)
 function set_bash_prompt() {
@@ -53,6 +110,7 @@ function set_bash_prompt() {
 
   if [ $SHOW_GIT_PROMPT -eq 1 ] ; then
     PS1="${PS1}$(__git_ps1)"
+    PS1="${PS1}$(git_prompt)"
   fi
 
   if [ $SHOW_HG_PROMPT -eq 1 ] ; then
