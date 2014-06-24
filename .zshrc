@@ -63,7 +63,7 @@ function git_prompt_status {
   gitstatus=$(git status 2> /dev/null)
   gitprompt=""
 
-  if echo $gitstatus | grep -q "nothing to commit, working directory clean" ; then
+  if [[ ${gitstatus} =~ "nothing to commit, working directory clean" ]] ; then
     gitprompt="${gitprompt}%{$fg_bold[green]%} ✔"
   else
     gitprompt="${gitprompt}%{$fg_bold[yellow]%} ⚡"
@@ -73,13 +73,13 @@ function git_prompt_status {
   diverge_pattern="and have ([[:digit:]]*) and ([[:digit:]]*) different commit each, respectively"
 
   if [[ ${gitstatus} =~ ${remote_pattern} ]]; then
-    if [[ ${BASH_REMATCH[1]} == "ahead" ]]; then
-      gitprompt="${gitprompt}%{$fg[cyan]%} ahead %{$fg[green]%}${BASH_REMATCH[2]}"
+    if [[ ${match[1]} == "ahead" ]]; then
+      gitprompt="${gitprompt}%{$fg_no_bold[cyan]%} ahead %{$fg_bold[green]%}${match[2]}"
     else
-      gitprompt="${gitprompt}%{$fg[cyan]%} behind %{$fg[red]%}${BASH_REMATCH[2]}"
+      gitprompt="${gitprompt}%{$fg_no_bold[cyan]%} behind %{$fg_bold[red]%}${match[2]}"
     fi
   elif [[ ${gitstatus} =~ ${diverge_pattern} ]]; then
-    gitprompt="${gitprompt}%{$fg[cyan]%} ahead %{$fg[green]%}${BASH_REMATCH[1]}%{$fg[cyan]%}, behind %{$fg[red]%}${BASH_REMATCH[2]}"
+    gitprompt="${gitprompt}%{$fg_no_bold[cyan]%} ahead %{$fg_bold[green]%}${match[1]}%{$fg_no_bold[cyan]%}, behind %{$fg_bold[red]%}${match[2]}"
   fi
 
   gitprompt="${gitprompt}%{$fg_no_bold[cyan]%}"
