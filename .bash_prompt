@@ -82,13 +82,26 @@ function git_prompt_branch {
 }
 
 function git_prompt_status {
-  gitstatus=$(git status)
+  gitstatus=$(git status 2> /dev/null)
   gitprompt=""
 
   if echo $gitstatus | grep -q "nothing to commit, working directory clean" ; then
     gitprompt="${gitprompt}\[$COLOR_GREEN\] ✔"
   else
-    gitprompt="${gitprompt}\[$COLOR_RED\] ✗"
+    gitprompt="${gitprompt}\[$COLOR_YELLOW\] ⚡"
+  fi
+
+  remote_pattern="Your branch is (ahead|behind).*by ([[:digit:]]*) commit"
+  diverge_pattern="and have ([[:digit:]]*) and ([[:digit:]]*) different commit each, respectively"
+
+  if [[ ${gitstatus} =~ ${remote_pattern} ]]; then
+    if [[ ${BASH_REMATCH[1]} == "ahead" ]]; then
+      gitprompt="${gitprompt}\[$COLOR_GREEN\] ahead ${BASH_REMATCH[2]}"
+    else
+      gitprompt="${gitprompt}\[$COLOR_RED\] behind ${BASH_REMATCH[2]}"
+    fi
+  elif [[ ${gitstatus} =~ ${diverge_pattern} ]]; then
+    gitprompt="${gitprompt}\[$COLOR_CYAN\] ahead \[$COLOR_GREEN\]${BASH_REMATCH[1]}\[$COLOR_CYAN\], behind \[$COLOR_RED\]${BASH_REMATCH[2]}"
   fi
 
   echo $gitprompt
