@@ -42,7 +42,7 @@ function set_bash_prompt() {
       ;;
   esac
 
-  PS1="${XTERM_TITLE}\[$COLOR_PURPLE\]\u\[$COLOR_RESET\] on \[$COLOR_RED\]\h\[$COLOR_RESET\] in \w\[$COLOR_CYAN\]"
+  PS1="${XTERM_TITLE}\[$COLOR_PURPLE\]\u\[$COLOR_RESET\]@\[$COLOR_RED\]\h\[$COLOR_RESET\] \w\[$COLOR_CYAN\]"
 
   if [ $SHOW_GIT_PROMPT -eq 1 ] ; then
     PS1="${PS1}$(__git_ps1)"
