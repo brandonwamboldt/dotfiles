@@ -30,6 +30,13 @@ COLOR_WHITE="\033[1;37m"
 source ~/.git_prompt
 source ~/.hg_prompt
 
+# Figure out what type of repo we're in
+function prompt_char {
+  git branch >/dev/null 2>/dev/null && echo '±' && return
+  hg root >/dev/null 2>/dev/null && echo '☿' && return
+  echo '↪'
+}
+
 # Set the window title to show the user@host and the current working directory
 # (Don't expand $HOME)
 function set_bash_prompt() {
@@ -52,7 +59,7 @@ function set_bash_prompt() {
     PS1="${PS1}$(hg_branch)"
   fi
 
-  PS1="${PS1}\[$COLOR_RESET\]\n\[$COLOR_GREEN\]↪\[$COLOR_RESET\] "
+  PS1="${PS1}\[$COLOR_RESET\]\n\[$COLOR_GREEN\]$(prompt_char)\[$COLOR_RESET\] "
 }
 
 PROMPT_COMMAND=set_bash_prompt
