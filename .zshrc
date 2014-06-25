@@ -95,10 +95,21 @@ function git_prompt_status {
   echo $gitprompt
 }
 
+function load_prompt {
+  uptime=$(uptime)
+
+  if [[ ${uptime} =~ "load average: (.*)" ]]; then
+    echo $match[1]
+  fi
+}
+
 # Prompt
 autoload -U colors && colors
 NEWLINE=$'\n'
+LINEUP=$'\e[1A'
+LINEDOWN=$'\e[1B'
 PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg_bold[red]%}%m%{$reset_color%} ${PWD/#$HOME/~}$(git_prompt)${NEWLINE}%{$fg_bold[green]%}$(prompt_char)%{$reset_color%} '
+RPROMPT='%{${LINEUP}%}$(load_prompt)%{${LINEDOWN}%}'
 
 # Load my aliases
 source ~/.aliases
