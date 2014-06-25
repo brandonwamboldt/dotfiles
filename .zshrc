@@ -71,7 +71,7 @@ function git_prompt_status {
   gitstatus=$(git status 2> /dev/null)
   gitprompt=""
 
-  if [[ ${gitstatus} =~ "nothing to commit, working directory clean" ]] ; then
+  if [[ ${gitstatus} =~ "working directory clean" ]] ; then
     gitprompt="${gitprompt}%{$fg_bold[green]%} ✔"
   else
     gitprompt="${gitprompt}%{$fg_bold[yellow]%} ⚡"
