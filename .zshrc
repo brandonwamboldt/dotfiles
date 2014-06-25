@@ -9,6 +9,13 @@ zstyle :compinstall filename '/home/brandon/.zshrc'
 autoload -Uz compinit
 compinit
 
+# Set the xterm title
+case $TERM in
+  xterm*)
+    precmd () {print -Pn "\e]0;(zsh) %n@%m: %~\a"}
+    ;;
+esac
+
 # Figure out what type of repo we're in
 function prompt_char {
   git branch >/dev/null 2>/dev/null && echo '±' && return
@@ -94,7 +101,7 @@ NEWLINE=$'\n'
 PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg_bold[red]%}%m%{$reset_color%} ${PWD/#$HOME/~}$(git_prompt)${NEWLINE}%{$fg_bold[green]%}$(prompt_char)%{$reset_color%} '
 
 # Load my aliases
-source .aliases
+source ~/.aliases
 
 # Load my functions
-source .functions
+source ~/.functions

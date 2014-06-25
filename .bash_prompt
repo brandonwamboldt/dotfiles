@@ -27,7 +27,6 @@ COLOR_WHITE="\033[1;37m"
 # Prompt:
 # ------------------------------------------------------------------------------
 
-source ~/.git_prompt
 source ~/.hg_prompt
 
 # Figure out what type of repo we're in
@@ -112,7 +111,7 @@ function git_prompt_status {
 function set_bash_prompt() {
   case $TERM in
     xterm*)
-      XTERM_TITLE='\[\033]0;\u@\H \t $(pwd)\a\]'
+      XTERM_TITLE='\[\033]0;(bash) \u@\H: $(pwd)\a\]'
       ;;
     *)
       XTERM_TITLE=''
@@ -133,4 +132,3 @@ function set_bash_prompt() {
 }
 
 PROMPT_COMMAND=set_bash_prompt
-
