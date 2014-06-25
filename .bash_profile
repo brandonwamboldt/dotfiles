@@ -32,6 +32,9 @@ for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
 done
 unset file
 
+# Awesome zsh plugin works for bash too
+source ~/.zsh/plugins/z.sh
+
 #------------------------------------------////
 # Start SSH agent in Cygwin
 #------------------------------------------////
