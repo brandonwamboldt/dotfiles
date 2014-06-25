@@ -105,3 +105,8 @@ source ~/.aliases
 
 # Load my functions
 source ~/.functions
+
+# Zsh plugins
+source ~/.zsh/plugins/composer.zsh
+source ~/.zsh/plugins/npm.zsh
+source ~/.zsh/plugins/symfony2.zsh
