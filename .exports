@@ -27,3 +27,6 @@ export MANPAGER="less -X"
 
 # Always enable colored `grep` output
 export GREP_OPTIONS="--color=auto"
+
+# Better MySQL prompt
+export MYSQL_PS1="\u@\h \d > "
