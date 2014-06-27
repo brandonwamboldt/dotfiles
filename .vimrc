@@ -1,3 +1,5 @@
+" 256 colors
+set t_Co=256
 " Set the theme to something nice
 colorscheme molokai
 " Make Vim more useful
