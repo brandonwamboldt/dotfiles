@@ -3,7 +3,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory autocd extendedglob
 setopt promptsubst
-bindkey -v
+bindkey -e
 zstyle :compinstall filename '/home/brandon/.zshrc'
 
 autoload -Uz compinit
