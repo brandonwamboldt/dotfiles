@@ -122,3 +122,5 @@ source ~/.zsh/plugins/composer.zsh
 source ~/.zsh/plugins/npm.zsh
 source ~/.zsh/plugins/symfony2.zsh
 source ~/.zsh/plugins/z.sh
+
+# vim: set filetype=bash:

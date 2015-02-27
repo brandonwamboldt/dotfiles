@@ -48,3 +48,5 @@ if [ "$(expr substr $(uname -s) 1 6)" == "CYGWIN" ]; then
                 trap "kill $SSH_AGENT_PID" 0
         fi
 fi
+
+# vim: set filetype=bash:

@@ -4,3 +4,5 @@ hg_branch() {
 		echo $branch | awk '{print " (" $1 ")"}'
 	fi
 }
+
+# vim: set filetype=bash:
