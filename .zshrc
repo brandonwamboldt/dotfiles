@@ -12,7 +12,7 @@ compinit
 # Set the xterm title
 case $TERM in
   xterm*)
-    precmd () {print -Pn "\e]0;(zsh) %n@%m: %~\a"}
+    precmd () {print -Pn "\e]0;%m %~\a"}
     ;;
 esac
 

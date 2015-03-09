@@ -111,7 +111,7 @@ function git_prompt_status {
 function set_bash_prompt() {
   case $TERM in
     xterm*)
-      XTERM_TITLE='\[\033]0;(bash) \u@\H: $(pwd)\a\]'
+      XTERM_TITLE='\[\033]0;\H $(pwd)\a\]'
       ;;
     *)
       XTERM_TITLE=''
