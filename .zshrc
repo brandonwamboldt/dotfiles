@@ -109,7 +109,7 @@ NEWLINE=$'\n'
 LINEUP=$'\e[1A'
 LINEDOWN=$'\e[1B'
 PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg_bold[red]%}%m%{$reset_color%} ${PWD/#$HOME/~}$(git_prompt)${NEWLINE}%{$fg_bold[green]%}$(prompt_char)%{$reset_color%} '
-RPROMPT='%{${LINEUP}%}$(load_prompt)%{${LINEDOWN}%}'
+#RPROMPT='%{${LINEUP}%}$(load_prompt)%{${LINEDOWN}%}'
 
 # Load my aliases
 source ~/.aliases
