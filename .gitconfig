@@ -3,6 +3,7 @@
 #    email = me@here.com
 [core]
     whitespace = trailing-space,space-before-tab
+
 [color]
     diff = auto
     status = auto
@@ -19,6 +20,9 @@
     purr = pull --rebase
     standup = “!git log –since yesterday –author `git config user.email` –pretty=short”
     reposize = "!f() { git checkout $1 2>/dev/null; git ls-files --exclude-standard | xargs cat | wc -l | tail -n 1; git checkout master 2>/dev/null; }; f"
+    pushf = "!git push -f origin $(git rev-parse --abbrev-ref HEAD)"
+    acp = "!git add -A && git commit --amend -C HEAD && git push -f origin $(git rev-parse --abbrev-ref HEAD)"
+    add-nw = "!git diff -w --no-color | git apply --cached --ignore-whitespace"
 [apply]
     whitespace = fix
 [url "git://github.com/"]
