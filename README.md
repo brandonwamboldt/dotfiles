@@ -8,11 +8,11 @@ Installation
 
 **Bash:**
 
-> curl -sSL http://github.com/brandonwamboldt/dotfiles/archive/master.tar.gz | tar --strip-components=1 -C ~ -zx && /bin/rm ~/README.md && source ~/.bashrc
+> curl -sSL https://raw.githubusercontent.com/brandonwamboldt/dotfiles/master/install.sh | bash && source ~/.bashrc
 
 **Zsh:**
 
-> curl -sSL http://github.com/brandonwamboldt/dotfiles/archive/master.tar.gz | tar --strip-components=1 -C ~ -zx && /bin/rm ~/README.md && source ~/.zshrc
+> curl -sSL https://raw.githubusercontent.com/brandonwamboldt/dotfiles/master/install.sh | bash && source ~/.zshrc
 
 Features
 --------
