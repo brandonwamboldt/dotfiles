@@ -1,9 +1,6 @@
 # Make vim the default editor
 export EDITOR="vim"
 
-# Make xterm the default terminal
-export TERM="xterm"
-
 # Larger bash history
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
