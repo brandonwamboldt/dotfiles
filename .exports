@@ -25,9 +25,6 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # Don't clear the screen after quitting a manual page
 export MANPAGER="less -X"
 
-# Always enable colored `grep` output
-export GREP_OPTIONS="--color=auto"
-
 # Better MySQL prompt
 export MYSQL_PS1="\u@\h \d > "
 
