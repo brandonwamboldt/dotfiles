@@ -91,7 +91,7 @@ function git_prompt_status {
   fi
 
   remote_pattern="Your branch is (ahead|behind).*by ([[:digit:]]*) commit"
-  diverge_pattern="and have ([[:digit:]]*) and ([[:digit:]]*) different commit each, respectively"
+  diverge_pattern="and have ([[:digit:]]*) and ([[:digit:]]*) different commits? each"
 
   if [[ ${gitstatus} =~ ${remote_pattern} ]]; then
     if [[ ${BASH_REMATCH[1]} == "ahead" ]]; then
