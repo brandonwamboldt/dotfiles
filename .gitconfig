@@ -3,7 +3,7 @@
 #    email = your.name@example.com
 [core]
     whitespace = trailing-space,space-before-tab
-
+    autocrlf = false
 [color]
     diff = auto
     status = auto
@@ -12,12 +12,18 @@
     ui = true
     page = true
 [alias]
+    am = commit --amend
+    pf = "!git push -f origin $(git rev-parse --abbrev-ref HEAD)"
+    can = commit --amend --no-edit
     ci = commit -a
     co = checkout
     st = status -sb
+    cp = cherry-pick
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short --branches
     praise = blame
     purr = pull --rebase
+    rhu = reset --hard @{u}
+    rhy = reset --hard @{u}
     standup = “!git log –since yesterday –author `git config user.email` –pretty=short”
     reposize = "!f() { git checkout $1 2>/dev/null; git ls-files --exclude-standard | xargs cat | wc -l | tail -n 1; git checkout master 2>/dev/null; }; f"
     pushu = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
