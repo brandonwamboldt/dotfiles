@@ -84,7 +84,7 @@ function git_prompt_status {
   gitstatus=$(git status 2> /dev/null)
   gitprompt=""
 
-  if echo $gitstatus | grep -E -q "working (directory|tree) clean ; then
+  if echo $gitstatus | grep -E -q "working (directory|tree) clean" ; then
     gitprompt="${gitprompt}\[$COLOR_GREEN\] ✔"
   else
     gitprompt="${gitprompt}\[$COLOR_YELLOW\] ⚡"
