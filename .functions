@@ -1,4 +1,32 @@
 #------------------------------------------////
+# Kubernetes Helper Functions
+#------------------------------------------////
+
+kctx() {
+    if [ -z "$1" ]; then
+        kubectl config get-contexts
+    else
+        kubectl config use-context $1
+    fi
+}
+
+kwatch() {
+    watch -n 1 "kubectl get deployments,pods,endpoints,services,hpa -n $1"
+}
+
+knodes() {
+    watch -n 1 "kubectl get nodes"
+}
+
+kapply() {
+  for i in "$@"; do kubectl apply -f $i; done
+}
+
+kdelete() {
+  for i in "$@"; do kubectl delete -f $i; done
+}
+
+#------------------------------------------////
 # Functions and Scripts:
 #------------------------------------------////
 

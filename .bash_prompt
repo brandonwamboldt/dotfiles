@@ -1,5 +1,6 @@
 SHOW_GIT_PROMPT=1
 SHOW_HG_PROMPT=1
+SHOW_K8S_PROMPT=1
 
 #------------------------------------------////
 # Colors:
@@ -41,6 +42,28 @@ function git_prompt {
 
   if [ $? == 0 ] ; then
     echo " \[$COLOR_CYAN\]($(git_prompt_branch)$(git_prompt_status)\[$COLOR_CYAN\])\[$COLOR_RESET\]"
+  fi
+}
+
+function k8s_prompt {
+  k8sctx=$(kubectl config get-contexts | grep '*')
+
+  if [[ $? == 0 ]]; then
+    if [[ $k8sctx =~ @ ]]; then
+      k8sctx=$(echo -n "$k8sctx" | awk '{print $4}' | awk -F '@' '{print $NF}' | awk -F '.' '{print $1"."$2}')
+    elif [[ $k8sctx =~ : ]]; then
+      k8sctx=$(echo -n "$k8sctx" | awk '{print $3}' | awk -F ':' '{print $4"/"$6}' | awk -F '/' '{print $3"."$1}')
+    else
+      k8sctx=$(echo -n "$k8sctx" | awk '{print $3}')
+    fi
+
+    if [[ $k8sctx =~ uat ]]; then
+      echo " \[$COLOR_YELLOW\]{${k8sctx}\[$COLOR_YELLOW\]}\[$COLOR_RESET\]"
+    elif [[ $k8sctx =~ prod ]]; then
+      echo " \[$COLOR_RED\]{${k8sctx}\[$COLOR_RED\]}\[$COLOR_RESET\]"
+    else
+      echo " \[$COLOR_PURPLE\]{${k8sctx}\[$COLOR_PURPLE\]}\[$COLOR_RESET\]"
+    fi
   fi
 }
 
@@ -120,6 +143,10 @@ function set_bash_prompt() {
 
   PS1="${XTERM_TITLE}\[$COLOR_PURPLE\]\u\[$COLOR_RESET\]@\[$COLOR_RED\]\h\[$COLOR_RESET\] \w\[$COLOR_CYAN\]"
 
+  if [ $SHOW_K8S_PROMPT -eq 1 ]; then
+    PS1="${PS1}$(k8s_prompt)"
+  fi
+
   if [ $SHOW_GIT_PROMPT -eq 1 ] ; then
     PS1="${PS1}$(git_prompt)"
   fi
@@ -128,7 +155,7 @@ function set_bash_prompt() {
     PS1="${PS1}$(hg_branch)"
   fi
 
-  PS1="${PS1}\[$COLOR_RESET\]\n\[$COLOR_GREEN\]$(prompt_char)\[$COLOR_RESET\] "
+  PS1="${PS1}\[$COLOR_RESET\]\n\[$COLOR_GREEN\]$(prompt_char) \[$COLOR_RESET\]"
 }
 
 PROMPT_COMMAND=set_bash_prompt
