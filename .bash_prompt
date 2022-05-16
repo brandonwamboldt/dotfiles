@@ -41,7 +41,7 @@ function git_prompt {
   gitstatus=$(git status 1>/dev/null 2> /dev/null)
 
   if [ $? == 0 ] ; then
-    echo " \[$COLOR_CYAN\]($(git_prompt_branch)$(git_prompt_status)\[$COLOR_CYAN\])\[$COLOR_RESET\]"
+    echo " \[$COLOR_CYAN\]($(git_prompt_branch)$(git_prompt_status)\[$COLOR_RESET\]"
   fi
 }
 
@@ -108,7 +108,7 @@ function git_prompt_status {
   gitprompt=""
 
   if echo $gitstatus | grep -E -q "working (directory|tree) clean" ; then
-    gitprompt="${gitprompt}\[$COLOR_GREEN\] ✔"
+    gitprompt="${gitprompt}\[$COLOR_GREEN\] ✔ "
   else
     gitprompt="${gitprompt}\[$COLOR_YELLOW\] ⚡"
   fi
@@ -118,12 +118,14 @@ function git_prompt_status {
 
   if [[ ${gitstatus} =~ ${remote_pattern} ]]; then
     if [[ ${BASH_REMATCH[1]} == "ahead" ]]; then
-      gitprompt="${gitprompt}\[$COLOR_CYAN\] ahead \[$COLOR_GREEN\]${BASH_REMATCH[2]}"
+      gitprompt="${gitprompt}\[$COLOR_CYAN\] ahead \[$COLOR_GREEN\]${BASH_REMATCH[2]}\[$COLOR_CYAN\])"
     else
-      gitprompt="${gitprompt}\[$COLOR_CYAN\] behind \[$COLOR_RED\]${BASH_REMATCH[2]}"
+      gitprompt="${gitprompt}\[$COLOR_CYAN\] behind \[$COLOR_RED\]${BASH_REMATCH[2]}\[$COLOR_CYAN\])"
     fi
   elif [[ ${gitstatus} =~ ${diverge_pattern} ]]; then
-    gitprompt="${gitprompt}\[$COLOR_CYAN\] ahead \[$COLOR_GREEN\]${BASH_REMATCH[1]}\[$COLOR_CYAN\], behind \[$COLOR_RED\]${BASH_REMATCH[2]}"
+    gitprompt="${gitprompt}\[$COLOR_CYAN\]ahead \[$COLOR_GREEN\]${BASH_REMATCH[1]}\[$COLOR_CYAN\], behind \[$COLOR_RED\]${BASH_REMATCH[2]}\[$COLOR_CYAN\])"
+  else
+    gitprompt="${gitprompt}\[$COLOR_CYAN\])"
   fi
 
   echo $gitprompt
